@@ -1,0 +1,24 @@
+<html>
+   <body>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+      <form action = "http://localhost:5000/result" method = "POST">
+          <h1 style="color: #5e9ca0;">Liquid Studio Mosaic Challenge!</h1>
+          <h2 style="color: #2e6c80;">How to use:</h2>
+
+          <p>Target path - Name of the file you want to be processed to create Mosaic on (Placed in /images/target/ example: a.jpg)</p>
+          <p>Tile Folder - Name of the folder where the tile images are placed to create the Mosaic image (Placed in /images/tile/ example: flower)</p>
+          <p>Save Mosaic Image - Name of the mosaic imaged to be saved in /output example: output.jpg </p>
+          <p>Grid Size - Mosaic image pixel sizes example: 100 100</p>
+          <p>Resize - Resizing the tile images before processing and building mosaic example: 20 20</p>
+
+          <h2 style="color: #2e6c80;">Give it a try!!</h2>
+          <p>Target image <input type = "file" name = "target image" /></p>
+          <p>Tile Folder <input type = "text" name = "tile folder" /></p>
+          <p>Save Mosaic Image <input type ="text" name = "mosaic image" /></p>
+          <p>Grid Size (optional) <input type = "number" name = "grid size[]" /><input type = "number" name = "grid size[]" /></p>
+          <p>Resize (optional) <input type = "number" name = "resize[]" /><input type = "number" name = "resize[]" /></p>
+          <p><input type = "submit" value = "Build" name="submit_btn" onclick="$('#loading').show();"/></p>
+          <div id="loading" style="display:none;"><img src="/images/processing.gif" alt="" /></div>
+      </form>
+   </body>
+</html>

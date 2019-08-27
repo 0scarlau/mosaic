@@ -1,6 +1,6 @@
 import os
 from PIL import Image
-from utils.processor import get_average_rgb, best_match_tile_images, progress_bar
+from src.utils.processor import get_average_rgb, best_match_tile_images, progress_bar
 import random
 
 
@@ -67,7 +67,7 @@ class TileImages:
                 image.thumbnail((self.resize[0], self.resize[1]))
             return image
         except Exception as ex:
-            print(f'{ex}')
+            pass
 
     # def _build_white_tile(self):
     #     white_image = Image.new('RGB', (self.resize[0], self.resize[1]), (255, 255, 255))
@@ -145,8 +145,12 @@ class MosaicImage:
 
     @staticmethod
     def save(image, filename=None):
+        path = os.path.join(os.getcwd(), 'output')
+        if not os.path.exists(path):
+            os.mkdir(path)
+
         if filename is not None:
-            saved_path = os.path.join(os.getcwd(), 'output/', filename)
+            saved_path = os.path.join(os.getcwd(), 'output/', filename + '.jpg')
         else:
             saved_path = os.path.join(os.getcwd(), 'output/mosaic.jpg')
         image.save(saved_path)
