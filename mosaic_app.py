@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from src.utils.image import TargetImage, TileImages, MosaicImage
 from src.config.config import MosaicConfig
+import os
 
 app = Flask(__name__, static_folder='')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -8,7 +9,8 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 @app.route('/')
 @app.route('/home')
 def mosaic_main():
-    return render_template('mosaic.html')
+    tile_folders = os.listdir(os.path.join(os.getcwd(), 'images/tile'))
+    return render_template('mosaic.html', tile_folders=tile_folders)
 
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
@@ -24,6 +26,8 @@ def result():
 
         result = request.form
         config = MosaicConfig()
+
+
         target_image = result['target image']
         if not '' in request.form.getlist('grid size[]'):
             grid_size = [int(i) for i in request.form.getlist('grid size[]')]
@@ -31,7 +35,7 @@ def result():
         if not '' in request.form.getlist('resize[]'):
             resize = [int(i) for i in request.form.getlist('resize[]')]
 
-        tile_folder = result['tile folder']
+        tile_folder = result['folder']
         target = TargetImage(grid_size=grid_size, target_path=target_path, config=config)
         tile_image = TileImages(tile_path=tile_path, config=config, resize=resize, folder=tile_folder)
         target_image = target.get_target_image(target_image)

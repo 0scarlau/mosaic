@@ -13,8 +13,14 @@
 
           <h2 style="color: #2e6c80;">Give it a try!!</h2>
           <p>Target image <input type = "file" name = "target image" /></p>
-          <p>Tile Folder <input type = "text" name = "tile folder" /></p>
-          <p>Save Mosaic Image <input type ="text" name = "mosaic image" /></p>
+
+          <p>Tile Folder <select name="folder"></p>
+          {% for folder in tile_folders %}
+              <option value="{{ folder }}" selected='selected'>{{ folder }}</option>"
+<!--          <p>Tile Folder <input type = "text" name = "tile folder" /></p>-->
+          {% endfor %}
+          </select>
+          <p>Save Mosaic Image (optional) <input type ="text" name = "mosaic image" /></p>
           <p>Grid Size (optional) <input type = "number" name = "grid size[]" /><input type = "number" name = "grid size[]" /></p>
           <p>Resize (optional) <input type = "number" name = "resize[]" /><input type = "number" name = "resize[]" /></p>
           <p><input type = "submit" value = "Build" name="submit_btn" onclick="$('#loading').show();"/></p>

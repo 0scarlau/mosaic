@@ -2,5 +2,5 @@ image:
   target: images/target
   tile: images/tile/cat
   folder: images/tile/
-  width: 10
-  height: 10
+  width: 50
+  height: 50
