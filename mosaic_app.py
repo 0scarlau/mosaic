@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from src.utils.image import TargetImage, TileImages, MosaicImage
 from src.config.config import MosaicConfig
 import os
+import time
 
 app = Flask(__name__, static_folder='')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -16,6 +17,7 @@ def mosaic_main():
 def result():
 
      if request.method == 'POST':
+        start_time = time.time()
         target_path = None
         target_image = None
         grid_size = None
@@ -50,8 +52,8 @@ def result():
             save = result['mosaic image']
             image = '/output/' + result['mosaic image'] + '.jpg'
         mosaic.save(mosaic_image, filename=save)
-
-        return render_template("result.html", result=result, image=image)
+        finish_time = round(time.time() - start_time, 2)
+        return render_template("result.html", result=result, time=finish_time, image=image)
 
 @app.after_request
 def add_header(response):
@@ -62,7 +64,6 @@ def add_header(response):
     response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
     response.headers['Cache-Control'] = 'public, max-age=0'
     return response
-
 
 if __name__ == '__main__':
     app.run(debug=True)

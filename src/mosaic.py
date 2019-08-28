@@ -1,5 +1,8 @@
-from utils.image import TileImages, TargetImage, MosaicImage
-from config.config import MosaicConfig
+import os
+import sys
+sys.path.append(os.getcwd())
+from src.utils.image import TileImages, TargetImage, MosaicImage
+from src.config.config import MosaicConfig
 import time
 import argparse
 

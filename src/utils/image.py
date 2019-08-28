@@ -14,7 +14,7 @@ class TargetImage:
         if grid_size:
             self.grid_size = grid_size
         if target_path:
-            self.target_path = os.path.join(os.getcwd(), target_path)
+            self.target_path = target_path
 
     def get_target_image(self, filename):
         print(f'Processing target image with filename: {filename}')
@@ -45,6 +45,7 @@ class TargetImage:
         print(f'Total number of tiles from splitted target image: {len(images)}')
         return images
 
+
 class TileImages:
     def __init__(self, tile_path=None, config=None, resize=None, folder=None):
         self.tiles = list()
@@ -74,7 +75,7 @@ class TileImages:
     #     return white_image
 
     def prepare_tile_images(self, tile_path):
-        print(f'Reading tile images from path: {os.path.join(os.getcwd(), tile_path)}\n')
+        print(f'Reading tile images from path: {tile_path}\n')
         # self.tiles.append(self._build_white_tile())
         try:
             tile_paths = os.listdir(tile_path)
