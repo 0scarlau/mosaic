@@ -1,3 +1,6 @@
+##GITHUB LINK
+https://github.com/madoscar65/mosaic
+
 ##SETUP
 
 Assuming you already have python installed:
@@ -15,7 +18,7 @@ For windows:
 ```
 For Linux/MAC
 ```
-source venv/bin/activate
+source env/bin/activate
 ```
 
 3: Install all python libraries required for this project
