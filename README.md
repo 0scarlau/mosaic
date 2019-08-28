@@ -15,7 +15,7 @@ For windows:
 ```
 For Linux/MAC
 ```
-source venv/bin/activate
+source env/bin/activate
 ```
 
 3: Install all python libraries required for this project
