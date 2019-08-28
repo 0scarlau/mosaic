@@ -38,7 +38,7 @@ Parameters:
 ```--target-image``` : Name of the target image to be processed <br/>
 ```--target-path``` : Path to the image to be processed (The default path is ```/images/target/```<br/>
 ```--tile-path``` : Path of the where the tile images are stored (default = ```/images/tile```)<br/>
-```--tile-folder``` : Name of the folder stored in path (default = ```/images/tile```)
+```--tile-folder``` : Name of the folder stored in path (default = ```/images/tile```) <br/>
 ```--grid-size``` : Defines the amount of pixels the output image will have (default 100 x 100) <br/>
 ```--resize```: Resize the input tile images before being processed into mosaic <br/>
 ```--mosaic-image```: Filename output after mosaic has been created. Output will be saved in ```/output/```)
