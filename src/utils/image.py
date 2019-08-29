@@ -1,11 +1,20 @@
 import os
 from PIL import Image
 from src.utils.processor import get_average_rgb, best_match_tile_images, progress_bar
+from src.config.config import MosaicConfig
 import random
 
 
+"""
+TargetImage Class 
+Used to open up the target image by specifying the target path (default path is /images/target) and the image
+filename in that path. Image file should be in .jpg or .jpeg format. 
+Configuration will be loaded automatically, however variables can be overwritten 
+"""
+
+
 class TargetImage:
-    def __init__(self, target_path=None, grid_size=None, config=None):
+    def __init__(self, target_path=None, grid_size=None, config=MosaicConfig()):
         self.image = None
         if config:
             self.config = config
@@ -26,6 +35,12 @@ class TargetImage:
             print(f'{filename} does not exist in path {self.target_path}')
 
     def target_image_split(self):
+        """
+        Image will split into the grid size provided in the class. Default [50,50]
+        Size of the split tile image will be calculated and used to crop the existing target image to form
+        new tiles images. The cropped target images will be appended into an array and returned
+        """
+
         print(f'Splitting target image into tiles')
         images = []
         target_image_width = self.image.size[0]
@@ -45,9 +60,19 @@ class TargetImage:
         print(f'Total number of tiles from splitted target image: {len(images)}')
         return images
 
+"""
+TileImage class opens up all the input tile images placed in the tile path (default path is /images/tile) 
+If using the default path, the class must take in the folder name where the tile images are located or
+the direct tile path can be loaded.
+
+The input tile images will vary in size, and the resize variable can increase or decrease the input tile images
+before processing. The greater the size of the input tile images, the greater the size of the file will be
+If resize parameter is not used, the default input tile image size will be used for processing
+"""
+
 
 class TileImages:
-    def __init__(self, tile_path=None, config=None, resize=None, folder=None):
+    def __init__(self, tile_path=None, config=MosaicConfig(), resize=None, folder=None):
         self.tiles = list()
         self.resize = resize
 
@@ -96,6 +121,14 @@ class TileImages:
         return averages
 
     def get_tile_fit(self, split_images, reuse=True) -> list:
+
+        """
+        Averages of each split images and input tile images are calculated and the best fit for each split image
+        will be calculated using euclidean distance formula. The distance formula will return the index of the input
+        tile images that best fits the split images.
+
+        Function returns the input tile images in an array in the order of fitting
+        """
         indices = list()
         tile_fit = list()
 
@@ -121,6 +154,10 @@ class TileImages:
             progress_bar(process, len(indices))
 
         return tile_fit
+
+"""
+MosaicImage class takes the tile images and populates it into a Mosaic image 
+"""
 
 
 class MosaicImage:

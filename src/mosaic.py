@@ -2,7 +2,6 @@ import os
 import sys
 sys.path.append(os.getcwd())
 from src.utils.image import TileImages, TargetImage, MosaicImage
-from src.config.config import MosaicConfig
 import time
 import argparse
 
@@ -25,10 +24,9 @@ if __name__ == '__main__':
     save = args.mosaic_image
     resize = args.resize
     start_time = time.time()
-    config = MosaicConfig()
 
-    target = TargetImage(grid_size=grid_size, target_path=target_path, config=config)
-    tile_image = TileImages(tile_path=tile_path, config=config, resize=resize, folder=tile_folder)
+    target = TargetImage(grid_size=grid_size, target_path=target_path)
+    tile_image = TileImages(tile_path=tile_path, resize=resize, folder=tile_folder)
     target_image = target.get_target_image(target_image)
     input_images = tile_image.tiles
     cropped_images = target.target_image_split()
