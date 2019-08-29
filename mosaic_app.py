@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from src.utils.image import TargetImage, TileImages, MosaicImage
-from src.config.config import MosaicConfig
 import os
 import time
 
@@ -27,9 +26,6 @@ def result():
         resize = None
 
         result = request.form
-        config = MosaicConfig()
-
-
         target_image = result['target image']
         if not '' in request.form.getlist('grid size[]'):
             grid_size = [int(i) for i in request.form.getlist('grid size[]')]
@@ -38,8 +34,8 @@ def result():
             resize = [int(i) for i in request.form.getlist('resize[]')]
 
         tile_folder = result['folder']
-        target = TargetImage(grid_size=grid_size, target_path=target_path, config=config)
-        tile_image = TileImages(tile_path=tile_path, config=config, resize=resize, folder=tile_folder)
+        target = TargetImage(grid_size=grid_size, target_path=target_path)
+        tile_image = TileImages(tile_path=tile_path, resize=resize, folder=tile_folder)
         target_image = target.get_target_image(target_image)
         cropped_images = target.target_image_split()
         tile_fit = tile_image.get_tile_fit(cropped_images, reuse=True)
