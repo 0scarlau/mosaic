@@ -1,7 +1,7 @@
-##GITHUB LINK
+## GITHUB LINK
 https://github.com/madoscar65/mosaic
 
-##SETUP
+## SETUP
 
 Assuming you already have python installed:
 
@@ -27,7 +27,7 @@ pip install -r requirements.txt
 ```
 4: There are two different options to run the mosaic code, one from using the terminal/command line or using flask 
 web UI
-##Running the code in terminal
+## Running the code in terminal
 Change your directory to ```C:/path_to_project/mosaic/```.
 The python code by default will be reading the configuration file located in ```/config/config.yaml``` and 
 these parameters are passed through into the mosaic package. It also provides the option 
@@ -56,7 +56,7 @@ python src/mosaic.py --target-image=starrynight.jpg --mosaic-image=output --grid
  --grid-size 100 100 resize 30 30 
  ```
  
- ##Running the code using Flask Web Ui
+ ## Running the code using Flask Web Ui
  Change your directory to ```C:/path_to_project/mosaic/```.
  
  Run the flask application

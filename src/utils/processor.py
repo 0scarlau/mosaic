@@ -1,5 +1,5 @@
 import numpy as np
-
+import random
 
 def get_average_rgb(image):
     im = np.array(image)
@@ -22,8 +22,9 @@ def best_match_tile_images(target_tile_rgb_average:list, tile_rgb_averages:list)
     for index, average in enumerate(tile_rgb_averages):
         dist = euclidean_distance(target_tile_rgb_average, average)
         if dist < min_dist:
-            min_dist = dist
-            best_fit_index = index
+            if bool(random.getrandbits(1)):
+                min_dist = dist
+                best_fit_index = index
     return best_fit_index
 
 def progress_bar(progress: int, len_of_array: int) -> None:
