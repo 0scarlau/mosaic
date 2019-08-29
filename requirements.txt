@@ -1,6 +1,4 @@
-pandas
 numpy
 PyYaml
 Image
-sklearn
 flask==1.1.1
