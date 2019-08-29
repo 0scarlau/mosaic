@@ -56,7 +56,7 @@ python src/mosaic.py --target-image=starrynight.jpg --mosaic-image=output --grid
  --grid-size 100 100 resize 30 30 
  ```
  
- ## Running the code using Flask Web Ui
+ ## Running the code using Flask Web UI
  Change your directory to ```C:/path_to_project/mosaic/```.
  
  Run the flask application
@@ -66,3 +66,15 @@ python src/mosaic.py --target-image=starrynight.jpg --mosaic-image=output --grid
  
  NOTE: The flask application is restricted to use all target images and tile images from the package itself and no option
  of using images outside the project directory.
+
+You can also run the Flask application use docker containers 
+
+```
+docker build t mosaic .
+```
+
+```
+docker run -d -p 5000:5000 localhost/mosaic
+```
+
+Open to local host browser http://localhost:5000/
