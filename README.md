@@ -67,7 +67,7 @@ python src/mosaic.py --target-image=starrynight.jpg --mosaic-image=output --grid
  NOTE: The flask application is restricted to use all target images and tile images from the package itself and no option
  of using images outside the project directory.
 
-You can also run the Flask application use docker containers 
+You can also run the Flask application using docker containers 
 
 ```
 docker build -t mosaic_app .
