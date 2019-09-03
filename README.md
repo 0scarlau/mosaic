@@ -70,7 +70,7 @@ python src/mosaic.py --target-image=starrynight.jpg --mosaic-image=output --grid
 You can also run the Flask application use docker containers 
 
 ```
-docker build t mosaic .
+docker build -t mosaic_app .
 ```
 
 ```
