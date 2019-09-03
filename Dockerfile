@@ -7,6 +7,5 @@ RUN cd /mosaic && pip install --upgrade setuptools && pip install -r requirement
 
 WORKDIR /mosaic
 
-
 ENTRYPOINT ["python"]
 CMD ["mosaic_app.py"]

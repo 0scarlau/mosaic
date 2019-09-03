@@ -74,7 +74,7 @@ docker build t mosaic .
 ```
 
 ```
-docker run -d -p 5000:5000 localhost/mosaic
+docker run -d -p 80:80 localhost/mosaic
 ```
 
-Open to local host browser http://localhost:5000/
+Open to local host browser http://localhost/
