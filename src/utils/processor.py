@@ -1,5 +1,6 @@
 import numpy as np
 import random
+import math
 
 def get_average_rgb(image):
     im = np.array(image)
@@ -13,7 +14,7 @@ def euclidean_distance(x1: list, x2: list):
     else:
         for i in range(len(x1)):
             distance = distance + (x1[i] - x2[i]) ** 2
-        return distance
+        return math.sqrt(distance)
 
 def best_match_tile_images(target_tile_rgb_average:list, tile_rgb_averages:list) -> int:
     min_dist = float("inf")
