@@ -1,6 +1,6 @@
 image:
-  target: images/target
-  tile: images/tile/cat
-  folder: images/tile/
+  target_path: images/target
+  tile_path: images/tile/cat
+  tile_folder: images/tile/
   width: 50
   height: 50

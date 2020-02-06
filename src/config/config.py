@@ -28,12 +28,10 @@ class MosaicConfig:
         else:
             self.config = config
 
-        if 'image' in self.config:
-            self.tile_path = self.config.get('image').get('tile')
-            self.target_path = self.config.get('image').get('target')
-            self.width = self.config.get('image').get('width')
-            self.height = self.config.get('image').get('height')
-            self.tile_folder = self.config.get('image').get('folder')
+        for key, values in self.config.items():
+            for value in values:
+                if 'image' in key:
+                    setattr(self, value, self.config[key][value])
 
         self.grid_size = self.width, self.height
 
