@@ -1,5 +1,5 @@
 ## GITHUB LINK
-https://github.com/madoscar65/mosaic
+https://github.com/0scarlau/mosaic
 
 ## SETUP
 
